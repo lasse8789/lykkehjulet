@@ -11,7 +11,7 @@ String category = "DANSK BY"; // Kategori
 String[] words = {"København", "Aarhus",
   "Odense", "Aalborg", "Esbjerg",
   "Horsens", "Svendborg", "Stenstrup", "Køge"}; 
-// Status på spillet i et array
+
 boolean[] guessed;
 
 /* Viser vinduet og sætter ordet */
@@ -25,16 +25,15 @@ void setup() {
   textSize(36); // Bogstavernes størrelse
 }
 
-/* Opdaterer skærmen */
 void draw() {
-  background(200, 200, 255); // Nulstiller 
-  textAlign(LEFT); // Venstrestil kategorien
-  text(category, 105, 100); // Viser kategorien
-  textAlign(CENTER); // Centrer i hver kasse
+  background(200, 200, 255);  
+  textAlign(LEFT); 
+  text(category, 105, 100); 
+  textAlign(CENTER);
   char letter; // Bogstav i iteration af ord
-  // Løb igennem alle bogstaver i ordet
+
   for (int i = 0; i < word.length(); i++) {
-    // Sæt bogstavet ind i en firkant.
+    
     fill(0, 0, 0); // Sort skrift
     if (guessed[i]) {
       //Her sætter den bogstavet til ordet efter hvor selve bogstavet er, håber det gav mening
@@ -43,7 +42,7 @@ void draw() {
       letter = 20;
     }
     text(letter, 125 + i*50, 200);
-    noFill(); // Tomme kasser
+    noFill(); 
     rect(105 + i*50, 200 - 35, 45, 45);
     text("Gæt: " + attempts, 505, 100);
   }
@@ -59,14 +58,13 @@ void draw() {
   */
 }
 
-/* Gætter på et bogstav */
 void keyPressed() {
   char letter;
   for (int i = 0; i < word.length(); i++) {
     //ser in bogstavet er i ordet
     letter = word.substring(i, i+1).toLowerCase()
       .charAt(0);
-    // Undersøg for hvert tegn om det er gættet
+
     if (letter == key) guessed[i] = true; //<>//
   }
   //Tilføjer til attempts. Lige nu tilføjer den dog hver gang man trykker, selvom man har trykket på tasten før
